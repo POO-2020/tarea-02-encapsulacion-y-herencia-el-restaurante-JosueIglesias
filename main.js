@@ -8,21 +8,70 @@ import Fecha from "./fecha.js"
 import Pedido from "./pedido.js"
 import Restaurante from "./restaurante.js"
 
+const direccion1 = new Direccion("Av. Gordolova", 442, 2, "Las lomas", 32448, "Villa de Alvarez", "Villa de Alvarez")
+const cliente1 = new Cliente ("Enrique Pantoja", direccion1, "772-223-449")
+const datosPedido1 = {
+    fecha: new Fecha(2020, 4, 24),
+    hora: new Tiempo(1,50,"pm"),
+    cliente: cliente1
+} 
+const datosPedido2 = {
+    fecha: new Fecha(2020, 4, 25),
+    hora: new Tiempo (5, 30, "pm"),
+    cliente: cliente1
+}
+const datosPedido3 = {
+    fecha: new Fecha(2020, 3, 20),
+    hora: new Tiempo(4, 14, "pm"),
+    cliente: cliente1
+}
+
 class Main {
     constructor(){
         this.producto1 = new Producto("Tortaogada estilo colimote", new Precio(49))
         this.producto2 = new Producto("Tacos de soia", new Precio(27))
         this.producto3 = new Producto("Agua de horchata", new Precio(15))
-        this.direccion1 = new Direccion("Av. Gordolova", 442, 2, "Las lomas", 32448, "Villa de Alvarez", "Villa de Alvarez")
+        //this.direccion1 = new Direccion("Av. Gordolova", 442, 2, "Las lomas", 32448, "Villa de Alvarez", "Villa de Alvarez")
         this.elementoPedido1 = new ElementoPedido(this.producto1, 4)
         this.elementoPedido2 = new ElementoPedido(this.producto2, 5)
         this.elementoPedido3 = new ElementoPedido(this.producto3, 4)
-        this.cliente1 = new Cliente("Enrique Pantoja", this.direccion1, "772-223-449")
+        //const cliente1 = new Cliente("Enrique Pantoja", this.direccion1, "772-223-449")
         this.restaurante = new Restaurante("El wen sazón", "333-688-345" ,new Direccion("Av. Lasoia", 343, 2, "Lomas doradas", 425523, "Villa de Alvarez", "Villa de Alvarez"))
-        this.pedido1 = new Pedido(new Fecha(2020, 4, 24), new Tiempo(1,50,"pm"), this.cliente1)
-        this.pedido2 = new Pedido (new Fecha(2020, 4, 25), new Tiempo (5, 30, "pm"), this.cliente1) 
-        this.pedido3 = new Pedido(new Fecha(2020, 3, 20), new Tiempo(4, 14, "pm"), this.cliente1)
-
+        this.pedido1 = new Pedido(datosPedido1)
+        this.pedido2 = new Pedido(datosPedido2) 
+        this.pedido3 = new Pedido(datosPedido3)
+        
+        /*
+        const datosPedido1 = {
+            fecha: new Fecha(2020, 4, 24),
+            hora: new Tiempo(1,50,"pm"),
+            cliente: cliente1
+        } 
+        const datosPedido2 = {
+            fecha: new Fecha(2020, 4, 25),
+            hora: new Tiempo (5, 30, "pm"),
+            cliente: cliente1
+        }
+        const datosPedido3 = {
+            fecha: new Fecha(2020, 3, 20),
+            hora: new Tiempo(4, 14, "pm"),
+            cliente: cliente1
+        }
+        /*this.datosPedido1 = {
+            fecha: new Fecha(2020, 4, 24),
+            hora: new Tiempo(1,50,"pm"),
+            cliente: this.cliente1
+        } 
+        this.datosPedido2 = {
+            fecha: new Fecha(2020, 4, 25),
+            hora: new Tiempo (5, 30, "pm"),
+            cliente: this.cliente1
+        }
+        this.datosPedido3 = {
+            fecha: new Fecha(2020, 3, 20),
+            hora: new Tiempo(4, 14, "pm"),
+            cliente: this.cliente1
+        }*/
     }
 
     probarPrecio(){
@@ -46,14 +95,14 @@ class Main {
     probarDireccion(){
         console.log("----------Direccion----------")
         //let direccion1 = new Direccion("Av. Gordolova", 442, 2, "Las lomas", 32448, "Villa de Alvarez", "Villa de Alvarez")
-        console.log(this.direccion1.getFormatoCorto())
-        console.log(this.direccion1.getFormatoExtendido())
+        console.log(direccion1.getFormatoCorto())
+        console.log(direccion1.getFormatoExtendido())
     }
 
     probarCliente(){
         console.log("----------Cliente----------")
         //let cliente1 = new Cliente("Enrique Pantoja", this.direccion1, "772-223-449")
-        console.log(this.cliente1.getPerfil())
+        console.log(cliente1.getPerfil())
     }
     
     probarTiempo(){
@@ -94,9 +143,9 @@ class Main {
 
     probarRestaurante(){
         console.log("----------Restaurante----------")
-        console.log(this.restaurante.nombre)
+        console.log(this.restaurante._nombre)
         console.log(`Telefono: ${this.restaurante.telefono}`)
-        console.log(this.restaurante.direccion.getFormatoCorto())
+        console.log(this.restaurante._direccion.getFormatoCorto())
         this.restaurante.registrarProductos(this.producto1)
         this.restaurante.registrarProductos(this.producto2)
         this.restaurante.listarProductos(this.producto1)

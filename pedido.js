@@ -4,7 +4,7 @@ import ElementoPedido from "./elemento-pedido.js";
 import Cliente from "./cliente.js";
 
 export default class Pedido {
-    constructor(fecha, hora, cliente){
+    constructor({fecha, hora, cliente}){
         this._fecha = fecha
         this._hora = hora
         this._cliente = cliente
@@ -14,12 +14,12 @@ export default class Pedido {
 
 
     getResumen() {
-       return`${this._fecha.getFecha()} ${this._hora.getFormato12()} - ${this._elementos.length} elementos con ${this._getProductos()} productos - Total: $${this._getCostoTotal()}` 
+       return`${this._fecha.getFecha()} ${this._hora.getFormato12()} - ${this._elementos.length} elementos con ${this.getProductos()} productos - Total: $${this.getCostoTotal()}` 
     }
     getCostoTotal(){
         let costoTotal = 0 
         this._elementos.forEach(elementoPedido => {
-            costoTotal = costoTotal + elementoPedido.cantidad * elementoPedido.producto.precio.valor
+            costoTotal = costoTotal + elementoPedido._cantidad * elementoPedido._producto._precio._valor
         })
        
         return costoTotal
@@ -44,7 +44,7 @@ export default class Pedido {
         let totalProductos = 0
 
         this._elementos.forEach(elementoPedido => {
-            totalProductos = totalProductos + elementoPedido.cantidad
+            totalProductos = totalProductos + elementoPedido._cantidad
         })
        
         return totalProductos
