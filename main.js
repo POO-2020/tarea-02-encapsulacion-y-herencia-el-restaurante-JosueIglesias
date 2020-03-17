@@ -13,17 +13,20 @@ const cliente1 = new Cliente ("Enrique Pantoja", direccion1, "772-223-449")
 const datosPedido1 = {
     fecha: new Fecha(2020, 4, 24),
     hora: new Tiempo(1,50,"pm"),
-    cliente: cliente1
+    cliente: cliente1,
+    numPedido: 11
 } 
 const datosPedido2 = {
     fecha: new Fecha(2020, 4, 25),
     hora: new Tiempo (5, 30, "pm"),
-    cliente: cliente1
+    cliente: cliente1,
+    numPedido: 12
 }
 const datosPedido3 = {
     fecha: new Fecha(2020, 3, 20),
     hora: new Tiempo(4, 14, "pm"),
-    cliente: cliente1
+    cliente: cliente1,
+    numPedido: 13
 }
 
 class Main {
@@ -36,7 +39,12 @@ class Main {
         this.elementoPedido2 = new ElementoPedido(this.producto2, 5)
         this.elementoPedido3 = new ElementoPedido(this.producto3, 4)
         //const cliente1 = new Cliente("Enrique Pantoja", this.direccion1, "772-223-449")
-        this.restaurante = new Restaurante("El wen sazón", "333-688-345" ,new Direccion("Av. Lasoia", 343, 2, "Lomas doradas", 425523, "Villa de Alvarez", "Villa de Alvarez"))
+        //this.restaurante = new Restaurante("El wen sazón", "333-688-345" ,new Direccion("Av. Lasoia", 343, 2, "Lomas doradas", 425523, "Villa de Alvarez", "Villa de Alvarez"))
+        this.restaurante = new Restaurante ({
+            nombre:"El wen sazón",
+            telefono: "333-688-345",
+            direccion: new Direccion("Av. Lasoia", 343, 2, "Lomas doradas", 425523, "Villa de Alvarez", "Villa de Alvarez")
+        })
         this.pedido1 = new Pedido(datosPedido1)
         this.pedido2 = new Pedido(datosPedido2) 
         this.pedido3 = new Pedido(datosPedido3)
@@ -144,7 +152,7 @@ class Main {
     probarRestaurante(){
         console.log("----------Restaurante----------")
         console.log(this.restaurante._nombre)
-        console.log(`Telefono: ${this.restaurante.telefono}`)
+        console.log(`Telefono: ${this.restaurante._telefono}`)
         console.log(this.restaurante._direccion.getFormatoCorto())
         this.restaurante.registrarProductos(this.producto1)
         this.restaurante.registrarProductos(this.producto2)
@@ -154,6 +162,15 @@ class Main {
         this.restaurante.registrarPedido(this.pedido2)
         this.restaurante.registrarPedido(this.pedido3)
         this.restaurante.listarPedidos()
+
+        console.log(this.restaurante.encontrarPedido(this.pedido2))
+        console.log(this.restaurante.registrarPedido(this.pedido3))
+        console.log(this.restaurante.eliminarPedido(this.pedido2))
+        this.restaurante.listarPedidos()
+
+        console.log(this.restaurante.actualizarPedido(this.pedido3, this.pedido2))
+        this.restaurante.listarPedidos()
+
     }
 }
 

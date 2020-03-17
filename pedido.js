@@ -4,10 +4,11 @@ import ElementoPedido from "./elemento-pedido.js";
 import Cliente from "./cliente.js";
 
 export default class Pedido {
-    constructor({fecha, hora, cliente}){
+    constructor({fecha, hora, cliente, numPedido}){
         this._fecha = fecha
         this._hora = hora
         this._cliente = cliente
+        this._numPedido = numPedido
         this._elementos = new Array
         this._productos = new Array
     }
@@ -49,4 +50,11 @@ export default class Pedido {
        
         return totalProductos
 }
+
+    esIgualA(pedido){
+        if (pedido._numPedido === this._numPedido){
+            return true
+        }
+        return false
+    }
 }
