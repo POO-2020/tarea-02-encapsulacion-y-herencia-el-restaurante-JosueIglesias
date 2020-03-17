@@ -65,26 +65,22 @@ class Main {
 
     probarProducto(){
         console.log("---------Producto----------")
-        //let producto1 = new Producto("Tortaogada estilo colimote", new Precio(49))
         console.log(this.producto1.getDescripcion())
     }
 
     probarElementoPedido(){
         console.log("----------Elemento Pedido----------")
-        //let pedido1 = new ElementoPedido(this.producto1, 4)
         console.log(this.elementoPedido1.getDescripcion())
     }
 
     probarDireccion(){
         console.log("----------Direccion----------")
-        //let direccion1 = new Direccion("Av. Gordolova", 442, 2, "Las lomas", 32448, "Villa de Alvarez", "Villa de Alvarez")
         console.log(direccion1.getFormatoCorto())
         console.log(direccion1.getFormatoExtendido())
     }
 
     probarCliente(){
         console.log("----------Cliente----------")
-        //let cliente1 = new Cliente("Enrique Pantoja", this.direccion1, "772-223-449")
         console.log(cliente1.getPerfil())
     }
     
